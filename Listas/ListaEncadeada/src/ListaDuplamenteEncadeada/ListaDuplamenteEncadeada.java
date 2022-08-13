@@ -94,7 +94,10 @@ public class ListaDuplamenteEncadeada {
                         return;
                     }
                     aux.setProximo(p.getProximo());
-                    p.getProximo().setAnterior(aux);
+                    
+                    if(p.getProximo() != null)                    
+                        p.getProximo().setAnterior(aux);
+
                     this.tamanhoLista--;
                     return;
                 }
