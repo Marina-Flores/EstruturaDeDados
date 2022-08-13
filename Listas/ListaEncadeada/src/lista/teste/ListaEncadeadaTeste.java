@@ -6,6 +6,7 @@ public class ListaEncadeadaTeste {
     public static void main(String[] args) throws Exception {
         ListaEncadeada lista = new ListaEncadeada();
 
+
         lista.Adicionar(1);  
         lista.Adicionar(2);
         lista.Adicionar(3);
