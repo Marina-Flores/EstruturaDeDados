@@ -8,21 +8,15 @@ public class ListaEncadeadaTeste {
 
         lista.Adicionar(1);  
         lista.Adicionar(2);
-        lista.Adicionar(5);
-        lista.Adicionar(7);
         lista.Adicionar(3);
-        lista.Adicionar(1);
+        lista.Adicionar(5);       
 
-        System.out.println(lista);
+        lista.Imprimir();
 
-        lista.ExcluirPrimeiro();
-        lista.ExcluirPrimeiro();
-        lista.ExcluirPrimeiro();
+        lista.AdicionarOrdenado(4);
+        lista.AdicionarOrdenado(7);
 
-        System.out.println(lista);
-
-        lista.Excluir(7);      
-        System.out.println(lista);
+        lista.Imprimir();
 
     }
 }
