@@ -14,8 +14,8 @@ public class ListaDuplamenteEncadeada {
         No novoNo = new No(elemento);
         if(ListaVazia())
         {
-            this.ref = novoNo;
-            //this.ref.setAnterior(null);            
+            this.ref = novoNo;                       
+            tamanhoLista++;
         }        
         else
         {
@@ -31,6 +31,79 @@ public class ListaDuplamenteEncadeada {
         }
     }
 
+    public int Buscar(int elemento)
+    {
+        if(ListaVazia())
+        {
+            return -1;
+        }
+        else if(GetTamanho() == 1)
+        {
+            if(this.ref.getElemento() == elemento)
+            {
+                return -1;
+            }            
+        }            
+        else
+        {
+            int posicao = 0;
+            for(No aux = ref; aux != null; aux = aux.getProximo())
+            {    
+                if(aux.getElemento() == elemento)
+                {
+                    return posicao;
+                }
+                posicao++;
+            }                     
+        }  
+        return -1;      
+    }
+
+    public void Excluir(int elemento)
+    {
+        if(ListaVazia())
+        {
+            System.out.println("Lista vazia");
+            return;
+        }
+        else if(GetTamanho() == 1)
+        {
+            if(ref.getElemento() == elemento)
+            {
+                this.ref = null; 
+                this.tamanhoLista --;
+            }                 
+            else
+            {
+                System.out.println("Elemento não encontrado");
+            }        
+            return;        
+        }
+        else
+        {
+            No aux = null; 
+            for(No p = ref; p != null; p = p.getProximo())
+            {
+                if(p.getElemento() == elemento)
+                {
+                    if(aux == null)
+                    {
+                        ref = p.getProximo();
+                        ref.setAnterior(null); 
+                        this.tamanhoLista--;
+                        return;
+                    }
+                    aux.setProximo(p.getProximo());
+                    p.getProximo().setAnterior(aux);
+                    this.tamanhoLista--;
+                    return;
+                }
+                aux = p;
+            }
+        }
+        System.out.println("Elemento não encontrado");
+    }
+
     public void Imprimir()
     {
         if(ListaVazia())
@@ -40,7 +113,6 @@ public class ListaDuplamenteEncadeada {
         else
         {
             No ultimo = null;
-            System.out.println("Lista do início para o final: ");
             for(No aux = ref; aux != null; aux = aux.getProximo())
             {
                 System.out.print(aux + " ");
@@ -50,7 +122,6 @@ public class ListaDuplamenteEncadeada {
                 }
             }
             System.out.println("\n");
-            System.out.println("Lista do final para o início: ");
             for(No aux = ultimo; aux != null; aux = aux.getAnterior())
             {
                 System.out.print(aux + " ");
